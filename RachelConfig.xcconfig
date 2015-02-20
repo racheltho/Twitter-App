@@ -1,0 +1,11 @@
+//
+//  RachelConfig.xcconfig
+//  Twitter-App
+//
+//  Created by Rachel Thomas on 2/20/15.
+//  Copyright (c) 2015 Rachel Thomas. All rights reserved.
+//
+
+
+CONSUMER_KEY = "VWrkf7kMZblqXWEpkhzdzQlum"
+CONSUMER_SECRET = "fO1MrRXJebogStnyqr0jHEf08cw8ZrXAzWF0oZ4n6ecKU3jMBw"
