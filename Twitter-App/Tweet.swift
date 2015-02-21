@@ -15,6 +15,7 @@ class Tweet: NSObject {
     var createdAt: NSDate?
     
     init(dictionary: NSDictionary) {
+        //println(dictionary)
         user = User(dictionary: dictionary["user"] as NSDictionary)
         text = dictionary["text"] as? String
         createdAtString = dictionary["created_at"] as? String
