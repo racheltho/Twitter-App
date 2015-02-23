@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ComposerViewController: UIViewController {
+class ComposerViewController: UIViewController, UITextViewDelegate {
     
     var currentUser: User?
     @IBOutlet weak var profileImage: UIImageView!
@@ -21,6 +21,11 @@ class ComposerViewController: UIViewController {
         let navController = storyboard.instantiateInitialViewController() as UINavigationController
         self.presentViewController(navController, animated: true, completion: nil)
 
+    }
+    
+    func textViewDidBeginEditing(textView: UITextView) {
+        println(textView)
+        textView.text = ""
     }
 
     @IBAction func sendTweet(sender: AnyObject) {
@@ -40,6 +45,7 @@ class ComposerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        status.delegate = self
         currentUser =  User.currentUser
         profileImage.setImageWithURL(NSURL(string: currentUser!.profileImageURL!))
         name.text = currentUser!.name!

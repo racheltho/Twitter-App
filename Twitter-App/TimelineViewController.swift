@@ -89,6 +89,8 @@ class TimelineViewController: UIViewController, UITableViewDataSource {
         }
         if thisTweet.favorite_count! > 0 {
             cell.favoriteLabel.text = "\(thisTweet.favorite_count!)"
+        } else {
+            cell.favoriteLabel.text = ""
         }
         if thisTweet.retweeted! {
             cell.retweetImage.image = UIImage(named: "retweet-on.png")
@@ -97,6 +99,8 @@ class TimelineViewController: UIViewController, UITableViewDataSource {
         }
         if thisTweet.retweet_count! > 0 {
             cell.retweetLabel.text = "\(thisTweet.retweet_count!)"
+        } else {
+            cell.retweetLabel.text = ""
         }
         return cell
     }
