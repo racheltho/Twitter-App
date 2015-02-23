@@ -29,6 +29,7 @@
 		3E5242691A9A92C70038BCF5 /* retweet_hover.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E5242681A9A92C70038BCF5 /* retweet_hover.png */; };
 		3E52426B1A9AC8FF0038BCF5 /* Compose.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E52426A1A9AC8FF0038BCF5 /* Compose.storyboard */; };
 		3E52426D1A9ACB5D0038BCF5 /* ComposerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E52426C1A9ACB5D0038BCF5 /* ComposerViewController.swift */; };
+		3E52426F1A9AE1820038BCF5 /* twitter.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3E52426E1A9AE1820038BCF5 /* twitter.gif */; };
 		3E8E5E111A97F7D500FD9E49 /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8E5E101A97F7D500FD9E49 /* TimelineViewController.swift */; };
 		3E8E5E161A983A0B00FD9E49 /* TweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8E5E151A983A0B00FD9E49 /* TweetCell.swift */; };
 		3E8E5E181A98472900FD9E49 /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8E5E171A98472900FD9E49 /* GlobalConstants.swift */; };
@@ -74,6 +75,7 @@
 		3E5242681A9A92C70038BCF5 /* retweet_hover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = retweet_hover.png; path = Images.xcassets/retweet_hover.png; sourceTree = "<group>"; };
 		3E52426A1A9AC8FF0038BCF5 /* Compose.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Compose.storyboard; sourceTree = "<group>"; };
 		3E52426C1A9ACB5D0038BCF5 /* ComposerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposerViewController.swift; sourceTree = "<group>"; };
+		3E52426E1A9AE1820038BCF5 /* twitter.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = twitter.gif; sourceTree = "<group>"; };
 		3E8E5E101A97F7D500FD9E49 /* TimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
 		3E8E5E151A983A0B00FD9E49 /* TweetCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetCell.swift; sourceTree = "<group>"; };
 		3E8E5E171A98472900FD9E49 /* GlobalConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 		3E3C7D551A93BCA70099FCCB /* Twitter-App */ = {
 			isa = PBXGroup;
 			children = (
+				3E52426E1A9AE1820038BCF5 /* twitter.gif */,
 				3E8E5E141A9839E200FD9E49 /* Cells */,
 				3E8E5E131A97F7FA00FD9E49 /* Storyboards */,
 				3E8E5E121A97F7DD00FD9E49 /* ViewControllers */,
@@ -337,6 +340,7 @@
 				3E5242661A9A92B90038BCF5 /* favorite_hover.png in Resources */,
 				3E5242621A9A92B90038BCF5 /* retweet.png in Resources */,
 				3E5242611A9A92B90038BCF5 /* retweet_on.png in Resources */,
+				3E52426F1A9AE1820038BCF5 /* twitter.gif in Resources */,
 				3E5242631A9A92B90038BCF5 /* reply_hover.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
