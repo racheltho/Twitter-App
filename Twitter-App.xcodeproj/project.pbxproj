@@ -30,9 +30,10 @@
 		3E52426B1A9AC8FF0038BCF5 /* Compose.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E52426A1A9AC8FF0038BCF5 /* Compose.storyboard */; };
 		3E52426D1A9ACB5D0038BCF5 /* ComposerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E52426C1A9ACB5D0038BCF5 /* ComposerViewController.swift */; };
 		3E52426F1A9AE1820038BCF5 /* twitter.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3E52426E1A9AE1820038BCF5 /* twitter.gif */; };
+		3E5242711A9AE5250038BCF5 /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5242701A9AE5250038BCF5 /* GlobalConstants.swift */; };
+		3E5242731A9AE5F70038BCF5 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 3E5242721A9AE5F70038BCF5 /* .gitignore */; };
 		3E8E5E111A97F7D500FD9E49 /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8E5E101A97F7D500FD9E49 /* TimelineViewController.swift */; };
 		3E8E5E161A983A0B00FD9E49 /* TweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8E5E151A983A0B00FD9E49 /* TweetCell.swift */; };
-		3E8E5E181A98472900FD9E49 /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8E5E171A98472900FD9E49 /* GlobalConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,9 +77,10 @@
 		3E52426A1A9AC8FF0038BCF5 /* Compose.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Compose.storyboard; sourceTree = "<group>"; };
 		3E52426C1A9ACB5D0038BCF5 /* ComposerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposerViewController.swift; sourceTree = "<group>"; };
 		3E52426E1A9AE1820038BCF5 /* twitter.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = twitter.gif; sourceTree = "<group>"; };
+		3E5242701A9AE5250038BCF5 /* GlobalConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
+		3E5242721A9AE5F70038BCF5 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		3E8E5E101A97F7D500FD9E49 /* TimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
 		3E8E5E151A983A0B00FD9E49 /* TweetCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetCell.swift; sourceTree = "<group>"; };
-		3E8E5E171A98472900FD9E49 /* GlobalConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
 		E3CA66A457163894CB7FE563 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -104,6 +106,7 @@
 		3E3C7D4A1A93BCA70099FCCB = {
 			isa = PBXGroup;
 			children = (
+				3E5242721A9AE5F70038BCF5 /* .gitignore */,
 				3E3C7D551A93BCA70099FCCB /* Twitter-App */,
 				3E3C7D6B1A93BCA70099FCCB /* Twitter-AppTests */,
 				3E3C7D541A93BCA70099FCCB /* Products */,
@@ -195,7 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				3E42F9721A97C8AB00740C90 /* RachelConfig.xcconfig */,
-				3E8E5E171A98472900FD9E49 /* GlobalConstants.swift */,
+				3E5242701A9AE5250038BCF5 /* GlobalConstants.swift */,
 			);
 			name = Config;
 			path = ..;
@@ -338,6 +341,7 @@
 				3E5242691A9A92C70038BCF5 /* retweet_hover.png in Resources */,
 				3E52426B1A9AC8FF0038BCF5 /* Compose.storyboard in Resources */,
 				3E5242661A9A92B90038BCF5 /* favorite_hover.png in Resources */,
+				3E5242731A9AE5F70038BCF5 /* .gitignore in Resources */,
 				3E5242621A9A92B90038BCF5 /* retweet.png in Resources */,
 				3E5242611A9A92B90038BCF5 /* retweet_on.png in Resources */,
 				3E52426F1A9AE1820038BCF5 /* twitter.gif in Resources */,
@@ -393,8 +397,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				3E3C7D7D1A9515270099FCCB /* TwitterClient.swift in Sources */,
-				3E8E5E181A98472900FD9E49 /* GlobalConstants.swift in Sources */,
 				3E3C7D7A1A9513CF0099FCCB /* dummy.m in Sources */,
+				3E5242711A9AE5250038BCF5 /* GlobalConstants.swift in Sources */,
 				3E3C7D5B1A93BCA70099FCCB /* ViewController.swift in Sources */,
 				3E8E5E161A983A0B00FD9E49 /* TweetCell.swift in Sources */,
 				3E3C7D821A965FC90099FCCB /* Tweet.swift in Sources */,
