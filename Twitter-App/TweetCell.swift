@@ -15,12 +15,21 @@ class TweetCell: UITableViewCell {
     @IBOutlet weak var handle: UILabel!
     @IBOutlet weak var tweetText: UILabel!
     @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var retweetLabel: UILabel!
+    @IBOutlet weak var favoriteLabel: UILabel!
+    @IBOutlet weak var retweetImage: UIImageView!
+    @IBOutlet weak var favoriteImage: UIImageView!
     
     var tweet: Tweet!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        tweetText.preferredMaxLayoutWidth = tweetText.frame.size.width
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        tweetText.preferredMaxLayoutWidth = tweetText.frame.size.width
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
