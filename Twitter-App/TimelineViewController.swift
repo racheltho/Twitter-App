@@ -8,11 +8,10 @@
 
 import UIKit
 
-class TimelineViewController: UIViewController, UITableViewDataSource {
+class TimelineViewController: UIViewController, UITableViewDataSource, TweetCellReplyDelegate, TweetCellRetweetDelegate, TweetCellFavoriteDelegate {
     
     var tweets: [Tweet]?
     var pullRefreshControl: UIRefreshControl!
-
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -21,9 +20,35 @@ class TimelineViewController: UIViewController, UITableViewDataSource {
     }
     
     @IBAction func composeTweet(sender: AnyObject) {
+       segueToComposer(nil)
+    }
+    
+    func segueToComposer(replyTo: String!){
         let storyboard = UIStoryboard(name: "Compose", bundle: nil)
         let navController = storyboard.instantiateInitialViewController() as UINavigationController
+        let composeController = navController.topViewController as ComposerViewController
+        composeController.replyTo = replyTo
+        println("set replyto")
         self.presentViewController(navController, animated: true, completion: nil)
+    }
+    
+    func favorite(tweetCell: TweetCell) {
+        TwitterClient.sharedInstance.favoriteTweet(tweetCell.tweet!.id!, params: nil, completion: {(error) -> () in
+            println("success!")
+        })
+        onRefresh()
+    }
+    
+    func retweet(tweetCell: TweetCell) {
+        TwitterClient.sharedInstance.retweetTweet(tweetCell.tweet!.id!, params: nil, completion: {(error) -> () in
+            println("success!")
+        })
+        onRefresh()
+    }
+    
+    func reply(tweetCell: TweetCell) {
+        let replyTo = tweetCell.handle!.text as String?
+        segueToComposer(replyTo)
     }
     
     override func viewDidLoad() {
@@ -32,7 +57,6 @@ class TimelineViewController: UIViewController, UITableViewDataSource {
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
         TwitterClient.sharedInstance.timelineWithCompletion(nil, completion: {(tweets, error) -> () in
-            println(tweets)
             self.tweets = tweets
             self.tableView.reloadData()
         })
@@ -45,7 +69,6 @@ class TimelineViewController: UIViewController, UITableViewDataSource {
     
     func onRefresh() {
         TwitterClient.sharedInstance.timelineWithCompletion(nil, completion: {(tweets, error) -> () in
-            println(tweets)
             self.tweets = tweets
             self.tableView.reloadData()
         })
@@ -59,48 +82,45 @@ class TimelineViewController: UIViewController, UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection: Int) -> Int {
         if let array = tweets {
-            println(array.count)
             return array.count
         } else {
-            println("zero")
             return 0
         }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("tweetcell") as TweetCell
+        cell.replyDelegate = self
+        cell.retweetDelegate = self
+        cell.favoriteDelegate = self
         let thisTweet = tweets![indexPath.row] as Tweet
         let thisUser = thisTweet.user! as User
         cell.tweet = thisTweet
-        println(thisTweet.text!)
-        println(thisTweet.user!.name!)
         cell.tweetText.text = thisTweet.text! as NSString
         cell.name.text = thisUser.name! as NSString
         cell.handle.text = "@" + thisUser.screenname! as NSString
         cell.profileImage.setImageWithURL(NSURL(string: thisUser.profileImageURL!))
-        println(thisTweet.favorite_count!)
         println(thisTweet.favorited!)
-        println(thisTweet.retweet_count!)
         println(thisTweet.retweeted!)
         if thisTweet.favorited! {
-            cell.favoriteImage.image = UIImage(named: "favorite-on.png")
+            cell.favoriteButton.imageView?.image = UIImage(named: "favorite_on.png")
         } else {
-            cell.favoriteImage.image = UIImage(named: "favorite.png")
+            cell.favoriteButton.imageView?.image = UIImage(named: "favorite.png")
         }
         if thisTweet.favorite_count! > 0 {
-            cell.favoriteLabel.text = "\(thisTweet.favorite_count!)"
+            cell.favoriteCount.text = "\(thisTweet.favorite_count!)"
         } else {
-            cell.favoriteLabel.text = ""
+            cell.favoriteCount.text = ""
         }
         if thisTweet.retweeted! {
-            cell.retweetImage.image = UIImage(named: "retweet-on.png")
+            cell.retweetButton.imageView?.image = UIImage(named: "retweet_on.png")
         } else {
-            cell.retweetImage.image = UIImage(named: "retweet.png")
+            cell.retweetButton.imageView?.image = UIImage(named: "retweet.png")
         }
         if thisTweet.retweet_count! > 0 {
-            cell.retweetLabel.text = "\(thisTweet.retweet_count!)"
+            cell.retweetCount.text = "\(thisTweet.retweet_count!)"
         } else {
-            cell.retweetLabel.text = ""
+            cell.retweetCount.text = ""
         }
         return cell
     }

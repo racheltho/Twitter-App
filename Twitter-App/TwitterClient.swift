@@ -8,14 +8,10 @@
 
 import UIKit
 
-//let twitterConsumerKey = "VWrkf7kMZblqXWEpkhzdzQlum"
-//let twitterConsumerSecret = "fO1MrRXJebogStnyqr0jHEf08cw8ZrXAzWF0oZ4n6ecKU3jMBw"
 let twitterConsumerKey = CONSUMER_KEY
 let twitterConsumerSecret = CONSUMER_SECRET
 
 let twitterBaseURL = NSURL(string: "https://api.twitter.com")
-// private let twitterConsumerKey = NSBundle.mainBundle().objectForInfoDictionaryKey("CONSUMER_KEY") as NSString
-// private let twitterConsumerSecret = NSBundle.mainBundle().objectForInfoDictionaryKey("CONSUMER_SECRET") as NSString
 
 
 class TwitterClient: BDBOAuth1RequestOperationManager {
@@ -38,19 +34,37 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
             completion(error: error)
         }
     )}
+    
+    func favoriteTweet(id: Int, params: NSDictionary?, completion: (error: NSError?) -> () ){
+        println("favoriteTweet called")
+        println(id)
+        POST("1.1/favorites/create.json?id=\(id)", parameters: params, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+            println("favorite")
+            completion(error: nil)
+            }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+                println("error favoriting")
+                completion(error: error)
+            }
+        )}
 
+    
+    func retweetTweet(id: Int, params: NSDictionary?, completion: (error: NSError?) -> () ){
+        println("retweetTweet called")
+        println(id)
+        POST("1.1/statuses/retweet/\(id).json", parameters: params, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+            println("retweet")
+            completion(error: nil)
+        }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+                println("error retweeting")
+                completion(error: error)
+        }
+    )}
 
     func timelineWithCompletion(params: NSDictionary?, completion: (tweets: [Tweet]?, error: NSError?) -> () ) {
         GET("1.1/statuses/home_timeline.json", parameters: params, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
-            //println("timeline: \(response)")
             println("inside Timeline with Completion")
             var tweets = Tweet.tweetsWithArray(response as [NSDictionary])
-            //println(tweets.count)
-            //println(response)
             completion(tweets: tweets, error: nil)
-//            for tweet in tweets {
-//                println("text: \(tweet.text!), created: \(tweet.createdAt!)")
-//            }
             }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
                 println("error getting home timeline")
                 completion(tweets: nil, error: error)
@@ -78,10 +92,8 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
             println("Got the access token!")
             TwitterClient.sharedInstance.requestSerializer.saveAccessToken(accessToken)
             TwitterClient.sharedInstance.GET("1.1/account/verify_credentials.json", parameters: nil, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
-                //println("user: \(response)")
                 var user = User(dictionary: response as NSDictionary)
                 User.currentUser = user
-                println("User: \(user.name!)")
                 self.loginCompletion?(user: user, error: nil)
                 }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
                     println("error getting current user")

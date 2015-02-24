@@ -10,6 +10,7 @@ import UIKit
 
 class Tweet: NSObject {
     var user: User?
+    var id: Int?
     var text: String?
     var createdAtString: String?
     var createdAt: NSDate?
@@ -19,7 +20,10 @@ class Tweet: NSObject {
     var retweeted: Bool?
     
     init(dictionary: NSDictionary) {
-        //println(dictionary)
+        println("favorited: ")
+        println(dictionary["favorited"])
+        println("retweeted: ")
+        println(dictionary["retweeted"])
         user = User(dictionary: dictionary["user"] as NSDictionary)
         text = dictionary["text"] as? String
         createdAtString = dictionary["created_at"] as? String
@@ -27,7 +31,7 @@ class Tweet: NSObject {
         favorited = dictionary["favorited"] as? Bool
         retweet_count = dictionary["retweet_count"] as? Int
         retweeted = dictionary["retweeted"] as? Bool
-        
+        id = dictionary["id"] as? Int
         var formatter = NSDateFormatter()
         formatter.dateFormat = "EEE MMM d HH:mm:ss Z y"
         createdAt = formatter.dateFromString(createdAtString!)

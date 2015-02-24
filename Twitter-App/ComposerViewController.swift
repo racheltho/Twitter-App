@@ -11,6 +11,9 @@ import UIKit
 class ComposerViewController: UIViewController, UITextViewDelegate {
     
     var currentUser: User?
+    
+    var replyTo: String?
+    
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var handle: UILabel!
@@ -24,8 +27,10 @@ class ComposerViewController: UIViewController, UITextViewDelegate {
     }
     
     func textViewDidBeginEditing(textView: UITextView) {
-        println(textView)
-        textView.text = ""
+        println(replyTo)
+        if replyTo == nil {
+            textView.text = ""
+        }
     }
 
     @IBAction func sendTweet(sender: AnyObject) {
@@ -50,7 +55,9 @@ class ComposerViewController: UIViewController, UITextViewDelegate {
         profileImage.setImageWithURL(NSURL(string: currentUser!.profileImageURL!))
         name.text = currentUser!.name!
         handle.text = "@\(currentUser!.screenname!)"
-        println("made it here")
+        if replyTo != nil{
+            status.text = "\(replyTo!)"
+        }
     }
 
     override func didReceiveMemoryWarning() {

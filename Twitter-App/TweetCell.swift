@@ -8,20 +8,53 @@
 
 import UIKit
 
+protocol TweetCellReplyDelegate : class {
+    func reply(tweetCell: TweetCell)
+}
+
+protocol TweetCellRetweetDelegate : class {
+    func retweet(tweetCell: TweetCell)
+}
+
+protocol TweetCellFavoriteDelegate : class {
+    func favorite(tweetCell: TweetCell)
+}
+
 class TweetCell: UITableViewCell {
 
-
+    var tweet: Tweet!
+    
+    weak var replyDelegate: TweetCellReplyDelegate?
+    weak var retweetDelegate: TweetCellRetweetDelegate?
+    weak var favoriteDelegate: TweetCellFavoriteDelegate?
+    
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var handle: UILabel!
     @IBOutlet weak var tweetText: UILabel!
     @IBOutlet weak var profileImage: UIImageView!
-    @IBOutlet weak var retweetLabel: UILabel!
-    @IBOutlet weak var favoriteLabel: UILabel!
-    @IBOutlet weak var retweetImage: UIImageView!
-    @IBOutlet weak var favoriteImage: UIImageView!
     
-    var tweet: Tweet!
+    @IBOutlet weak var replyButton: UIButton!
+    @IBOutlet weak var retweetButton: UIButton!
+    @IBOutlet weak var favoriteButton: UIButton!
+
+    @IBOutlet weak var retweetCount: UILabel!
+    @IBOutlet weak var favoriteCount: UILabel!
     
+    @IBAction func replyAction(sender: AnyObject) {
+        println("reply")
+        replyDelegate?.reply(self)
+    }
+    
+    @IBAction func retweetAction(sender: AnyObject) {
+        println("retweet")
+        retweetDelegate?.retweet(self)
+    }
+    
+    @IBAction func favoriteAction(sender: AnyObject) {
+        println("favorite")
+        favoriteDelegate?.favorite(self)
+    }
+
     override func awakeFromNib() {
         super.awakeFromNib()
         tweetText.preferredMaxLayoutWidth = tweetText.frame.size.width
