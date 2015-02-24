@@ -32,6 +32,7 @@
 		3E52426F1A9AE1820038BCF5 /* twitter.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3E52426E1A9AE1820038BCF5 /* twitter.gif */; };
 		3E5242711A9AE5250038BCF5 /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5242701A9AE5250038BCF5 /* GlobalConstants.swift */; };
 		3E5242731A9AE5F70038BCF5 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 3E5242721A9AE5F70038BCF5 /* .gitignore */; };
+		3E67765D1A9CFF4700301B3F /* twitter2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3E67765C1A9CFF4700301B3F /* twitter2.gif */; };
 		3E8E5E111A97F7D500FD9E49 /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8E5E101A97F7D500FD9E49 /* TimelineViewController.swift */; };
 		3E8E5E161A983A0B00FD9E49 /* TweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8E5E151A983A0B00FD9E49 /* TweetCell.swift */; };
 /* End PBXBuildFile section */
@@ -79,6 +80,7 @@
 		3E52426E1A9AE1820038BCF5 /* twitter.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = twitter.gif; sourceTree = "<group>"; };
 		3E5242701A9AE5250038BCF5 /* GlobalConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
 		3E5242721A9AE5F70038BCF5 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		3E67765C1A9CFF4700301B3F /* twitter2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = twitter2.gif; sourceTree = "<group>"; };
 		3E8E5E101A97F7D500FD9E49 /* TimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
 		3E8E5E151A983A0B00FD9E49 /* TweetCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetCell.swift; sourceTree = "<group>"; };
 		E3CA66A457163894CB7FE563 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 		3E3C7D551A93BCA70099FCCB /* Twitter-App */ = {
 			isa = PBXGroup;
 			children = (
+				3E67765C1A9CFF4700301B3F /* twitter2.gif */,
 				3E52426E1A9AE1820038BCF5 /* twitter.gif */,
 				3E8E5E141A9839E200FD9E49 /* Cells */,
 				3E8E5E131A97F7FA00FD9E49 /* Storyboards */,
@@ -336,6 +339,7 @@
 				3E3C7D5E1A93BCA70099FCCB /* Main.storyboard in Resources */,
 				3E42F96E1A96B01B00740C90 /* Timeline.storyboard in Resources */,
 				3E3C7D631A93BCA70099FCCB /* LaunchScreen.xib in Resources */,
+				3E67765D1A9CFF4700301B3F /* twitter2.gif in Resources */,
 				3E5242671A9A92B90038BCF5 /* favorite.png in Resources */,
 				3E3C7D601A93BCA70099FCCB /* Images.xcassets in Resources */,
 				3E5242691A9A92C70038BCF5 /* retweet_hover.png in Resources */,

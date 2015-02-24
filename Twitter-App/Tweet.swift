@@ -20,10 +20,6 @@ class Tweet: NSObject {
     var retweeted: Bool?
     
     init(dictionary: NSDictionary) {
-        println("favorited: ")
-        println(dictionary["favorited"])
-        println("retweeted: ")
-        println(dictionary["retweeted"])
         user = User(dictionary: dictionary["user"] as NSDictionary)
         text = dictionary["text"] as? String
         createdAtString = dictionary["created_at"] as? String

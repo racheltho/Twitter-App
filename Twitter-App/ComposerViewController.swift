@@ -27,7 +27,6 @@ class ComposerViewController: UIViewController, UITextViewDelegate {
     }
     
     func textViewDidBeginEditing(textView: UITextView) {
-        println(replyTo)
         if replyTo == nil {
             textView.text = ""
         }
@@ -35,11 +34,9 @@ class ComposerViewController: UIViewController, UITextViewDelegate {
 
     @IBAction func sendTweet(sender: AnyObject) {
         var params = NSDictionary()
-        println("inside sendTweet")
         params = ["status" : status.text!]
         println(params)
         TwitterClient.sharedInstance.postTweet(params, completion: {(error) -> () in
-            println("success!")
             self.returnToTimeline()
         })
     }

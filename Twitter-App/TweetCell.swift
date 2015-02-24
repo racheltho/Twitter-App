@@ -41,17 +41,14 @@ class TweetCell: UITableViewCell {
     @IBOutlet weak var favoriteCount: UILabel!
     
     @IBAction func replyAction(sender: AnyObject) {
-        println("reply")
         replyDelegate?.reply(self)
     }
     
     @IBAction func retweetAction(sender: AnyObject) {
-        println("retweet")
         retweetDelegate?.retweet(self)
     }
     
     @IBAction func favoriteAction(sender: AnyObject) {
-        println("favorite")
         favoriteDelegate?.favorite(self)
     }
 

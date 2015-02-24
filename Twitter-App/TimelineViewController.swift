@@ -28,22 +28,31 @@ class TimelineViewController: UIViewController, UITableViewDataSource, TweetCell
         let navController = storyboard.instantiateInitialViewController() as UINavigationController
         let composeController = navController.topViewController as ComposerViewController
         composeController.replyTo = replyTo
-        println("set replyto")
         self.presentViewController(navController, animated: true, completion: nil)
     }
     
     func favorite(tweetCell: TweetCell) {
         TwitterClient.sharedInstance.favoriteTweet(tweetCell.tweet!.id!, params: nil, completion: {(error) -> () in
-            println("success!")
+            tweetCell.favoriteButton.imageView?.image = UIImage(named: "favorite_on.png")
+            let thisTweet = tweetCell.tweet! as Tweet
+            if thisTweet.favorite_count! > 0 {
+                tweetCell.favoriteCount.text = "\(thisTweet.favorite_count! + 1)"
+            } else {
+                tweetCell.favoriteCount.text = "1"
+            }
         })
-        onRefresh()
     }
     
     func retweet(tweetCell: TweetCell) {
         TwitterClient.sharedInstance.retweetTweet(tweetCell.tweet!.id!, params: nil, completion: {(error) -> () in
-            println("success!")
+            tweetCell.retweetButton.imageView?.image = UIImage(named: "retweet_on.png")
+            let thisTweet = tweetCell.tweet! as Tweet
+            if thisTweet.retweet_count! > 0 {
+                tweetCell.retweetCount.text = "\(thisTweet.retweet_count! + 1)"
+            } else {
+                tweetCell.retweetCount.text = "1"
+            }
         })
-        onRefresh()
     }
     
     func reply(tweetCell: TweetCell) {
@@ -100,8 +109,6 @@ class TimelineViewController: UIViewController, UITableViewDataSource, TweetCell
         cell.name.text = thisUser.name! as NSString
         cell.handle.text = "@" + thisUser.screenname! as NSString
         cell.profileImage.setImageWithURL(NSURL(string: thisUser.profileImageURL!))
-        println(thisTweet.favorited!)
-        println(thisTweet.retweeted!)
         if thisTweet.favorited! {
             cell.favoriteButton.imageView?.image = UIImage(named: "favorite_on.png")
         } else {
